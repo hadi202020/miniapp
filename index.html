@@ -77,35 +77,9 @@ tg.expand();
 
 const content = document.getElementById("content");
 
-// گرفتن اطلاعات کاربر از تلگرام
-const user = tg.initDataUnsafe?.user;
-
-if (!user) {
-  content.innerHTML = "<p>خطا در شناسایی کاربر ❌</p>";
-}
-
-const userId = user?.id;
-
-
 // ------------------
-// خرید پلن (ارسال به ربات)
+// خرید
 // ------------------
-function showPlans(){
-  content.innerHTML = `
-    <div class="card">
-      <h3>پلن 1 ماهه</h3>
-      <p>100 هزار تومان</p>
-      <button onclick="buyPlan('1month')">خرید</button>
-    </div>
-
-    <div class="card">
-      <h3>پلن 3 ماهه</h3>
-      <p>250 هزار تومان</p>
-      <button onclick="buyPlan('3month')">خرید</button>
-    </div>
-  `;
-}
-
 function buyPlan(plan){
   tg.sendData(JSON.stringify({
     action: "buy",
@@ -114,85 +88,36 @@ function buyPlan(plan){
 }
 
 
-
 // ------------------
-// گرفتن سرویس‌ها از API
+// گرفتن سرویس‌ها
 // ------------------
-async function showServices(){
-
+function showServices(){
   content.innerHTML = "<p>در حال دریافت سرویس‌ها...</p>";
 
-  try {
-    const response = await fetch("https://yourdomain.com/api/services", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: userId
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.services.length === 0) {
-      content.innerHTML = "<p>هیچ سرویسی ندارید ❗</p>";
-      return;
-    }
-
-    let html = "";
-    data.services.forEach(service => {
-      html += `
-        <div class="card">
-          <h3>${service.plan}</h3>
-          <p>وضعیت: ${service.status}</p>
-          <p>انقضا: ${service.expire_date}</p>
-        </div>
-      `;
-    });
-
-    content.innerHTML = html;
-
-  } catch (error) {
-    content.innerHTML = "<p>خطا در دریافت اطلاعات ❌</p>";
-  }
+  tg.sendData(JSON.stringify({
+    action: "get_services"
+  }));
 }
 
 
-
 // ------------------
-// گرفتن اطلاعات حساب کاربری
+// گرفتن پروفایل
 // ------------------
-async function showProfile(){
-
+function showProfile(){
   content.innerHTML = "<p>در حال دریافت اطلاعات...</p>";
 
-  try {
-    const response = await fetch("https://yourdomain.com/api/profile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: userId
-      })
-    });
-
-    const data = await response.json();
-
-    content.innerHTML = `
-      <div class="card">
-        <h3>اطلاعات کاربری</h3>
-        <p>نام: ${data.name}</p>
-        <p>آیدی: ${data.user_id}</p>
-        <p>موجودی کیف پول: ${data.wallet} تومان</p>
-      </div>
-    `;
-
-  } catch (error) {
-    content.innerHTML = "<p>خطا در دریافت اطلاعات ❌</p>";
-  }
+  tg.sendData(JSON.stringify({
+    action: "get_profile"
+  }));
 }
+
+
+// ------------------
+// دریافت پاسخ از ربات
+// ------------------
+tg.onEvent("mainButtonClicked", function() {
+  console.log("main button clicked");
+});
 
 </script>
 </body>
