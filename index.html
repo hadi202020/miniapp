@@ -94,18 +94,129 @@ const userId = user?.id;
 // ------------------
 // خرید پلن (ارسال به ربات)
 // ------------------
-function showPlans(){
+function showPlans() {
   content.innerHTML = `
+    <h2>──────── 🔹 پلن‌های 1 ماهه 🔹 ────────</h2>
     <div class="card">
-      <h3>پلن 1 ماهه</h3>
-      <p>100 هزار تومان</p>
-      <button onclick="buyPlan('1month')">خرید</button>
+      <h3>1 ماهه | 20 گیگ</h3>
+      <p>85 هزار تومان</p>
+      <button onclick="buyPlan('plan_1')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>1 ماهه | 30 گیگ</h3>
+      <p>115 هزار تومان</p>
+      <button onclick="buyPlan('plan_2')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>1 ماهه | 50 گیگ</h3>
+      <p>175 هزار تومان</p>
+      <button onclick="buyPlan('plan_3')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>1 ماهه | 70 گیگ</h3>
+      <p>235 هزار تومان</p>
+      <button onclick="buyPlan('plan_4')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>1 ماهه | 100 گیگ</h3>
+      <p>315 هزار تومان</p>
+      <button onclick="buyPlan('plan_5')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>1 ماهه | 120 گیگ</h3>
+      <p>370 هزار تومان</p>
+      <button onclick="buyPlan('plan_6')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>1 ماهه | 150 گیگ</h3>
+      <p>460 هزار تومان</p>
+      <button onclick="buyPlan('plan_7')">خرید</button>
     </div>
 
+    <h2>──────── 🔹 پلن‌های 2 ماهه 🔹 ────────</h2>
     <div class="card">
-      <h3>پلن 3 ماهه</h3>
-      <p>250 هزار تومان</p>
-      <button onclick="buyPlan('3month')">خرید</button>
+      <h3>2 ماهه | 30 گیگ</h3>
+      <p>135 هزار تومان</p>
+      <button onclick="buyPlan('plan_8')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>2 ماهه | 50 گیگ</h3>
+      <p>190 هزار تومان</p>
+      <button onclick="buyPlan('plan_9')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>2 ماهه | 70 گیگ</h3>
+      <p>265 هزار تومان</p>
+      <button onclick="buyPlan('plan_10')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>2 ماهه | 100 گیگ</h3>
+      <p>330 هزار تومان</p>
+      <button onclick="buyPlan('plan_11')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>2 ماهه | 150 گیگ</h3>
+      <p>480 هزار تومان</p>
+      <button onclick="buyPlan('plan_12')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>2 ماهه | 200 گیگ</h3>
+      <p>620 هزار تومان</p>
+      <button onclick="buyPlan('plan_13')">خرید</button>
+    </div>
+
+    <h2>──────── 🔹 پلن‌های 3 ماهه 🔹 ────────</h2>
+    <div class="card">
+      <h3>3 ماهه | 40 گیگ</h3>
+      <p>170 هزار تومان</p>
+      <button onclick="buyPlan('plan_14')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>3 ماهه | 90 گیگ</h3>
+      <p>310 هزار تومان</p>
+      <button onclick="buyPlan('plan_15')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>3 ماهه | 120 گیگ</h3>
+      <p>410 هزار تومان</p>
+      <button onclick="buyPlan('plan_16')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>3 ماهه | 250 گیگ</h3>
+      <p>790 هزار تومان</p>
+      <button onclick="buyPlan('plan_17')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>3 ماهه | 350 گیگ</h3>
+      <p>1 میلیون و 100 هزار تومان</p>
+      <button onclick="buyPlan('plan_18')">خرید</button>
+    </div>
+
+    <h2>──────── 🔹 پلن‌های 6 ماهه 🔹 ────────</h2>
+    <div class="card">
+      <h3>6 ماهه | 100 گیگ</h3>
+      <p>350 هزار تومان</p>
+      <button onclick="buyPlan('plan_19')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>6 ماهه | 200 گیگ</h3>
+      <p>650 هزار تومان</p>
+      <button onclick="buyPlan('plan_20')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>6 ماهه | 300 گیگ</h3>
+      <p>975 هزار تومان</p>
+      <button onclick="buyPlan('plan_21')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>6 ماهه | 420 گیگ</h3>
+      <p>1 میلیون و 330 هزار تومان</p>
+      <button onclick="buyPlan('plan_22')">خرید</button>
+    </div>
+    <div class="card">
+      <h3>6 ماهه | 600 گیگ</h3>
+      <p>1 میلیون و 850 هزار تومان</p>
+      <button onclick="buyPlan('plan_23')">خرید</button>
     </div>
   `;
 }
@@ -201,5 +312,6 @@ async function showProfile(){
 </script>
 </body>
 </html>
+
 
 
